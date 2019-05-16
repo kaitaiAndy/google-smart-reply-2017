@@ -8,15 +8,15 @@ parser = HyperOptArgumentParser(strategy='random_search')
 # build program arguments
 # --------------------------
 
-parser.add_opt_argument_list('--lr_1', default=0.0001, options=[0.0001, 0.0002, 0.0004, 0.0008, 0.001, 0.002], type=float, tunnable=True)
-parser.add_opt_argument_list('--batch_size', default=10, options=[20, 30, 40, 50], type=int, tunnable=True)
+parser.add_opt_argument_list('--lr_1', default=0.001, options=[0.0001, 0.0002, 0.0004, 0.0008, 0.001, 0.002], type=float, tunnable=True)
+parser.add_opt_argument_list('--batch_size', default=100, options=[20, 30, 40, 50], type=int, tunnable=True)
 parser.add_opt_argument_list('--embedding_dim', default=320, options=[100, 200, 320, 400], type=int, tunnable=True)
 parser.add_opt_argument_list('--max_seq_len', default=50, options=[50, 70, 90, 110], type=int, tunnable=True)
 
 # training params
-parser.add_argument('--nb_epochs', default=30, type=int)
+parser.add_argument('--nb_epochs', default=2, type=int)
 parser.add_argument('--optimizer_name', default='adam')
-parser.add_argument('--eval_every_n_batches', default=200, type=int)
+parser.add_argument('--eval_every_n_batches', default=5, type=int)
 parser.add_argument('--train_mode', default='train')
 
 # model params
@@ -24,13 +24,13 @@ parser.add_argument('--nb_grams', default=2, type=int)
 
 # path params
 parser.add_argument('--root_dir', default='')
-parser.add_argument('--dataset_train_path', default='')
-parser.add_argument('--dataset_test_path', default='')
-parser.add_argument('--dataset_val_path', default='')
-parser.add_argument('--vocab_path', default='')
+parser.add_argument('--dataset_train_path', default='enron/train.csv')
+parser.add_argument('--dataset_test_path', default='enron/test.csv')
+parser.add_argument('--dataset_val_path', default='enron/val.csv')
+parser.add_argument('--vocab_path', default='enron/vocabulary.txt')
 
-parser.add_argument('--model_save_dir', default='')
-parser.add_argument('--test_tube_dir', default='')
+parser.add_argument('--model_save_dir', default='save_model')
+parser.add_argument('--test_tube_dir', default='save_model')
 
 # experiment params
 parser.add_argument('--exp_name', default='dual_conv_dense')
